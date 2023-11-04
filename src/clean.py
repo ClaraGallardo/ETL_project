@@ -1,5 +1,7 @@
 import pandas as pd
 
+
+
 def abrir_csv(ruta):
     """
     Abre un archivo CSV y lo devuelve como un DataFrame.
