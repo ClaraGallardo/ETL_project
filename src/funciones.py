@@ -1,4 +1,9 @@
 import requests
+import json
+
+with open('API.txt') as file:
+    
+    key = file.read() #cargo mi contraseña y la guardo en una variable
 
 def limpieza_tipo(df):
 
@@ -36,8 +41,9 @@ def limpieza_tipo(df):
 
 
 def consulta_API(tipo):
+
     '''
-    Realiza una consulta a la API de Google Places para buscar restaurantes cercanos de un tipo específico.
+    Realiza una consulta a la API de Google Places para buscar restaurantes cercanos de un tipo específico, devuelve una lista llamada 'results'.
 
     Args:
         tipo (str): El tipo de restaurante que se desea buscar, por ejemplo, "coreano".
@@ -45,7 +51,6 @@ def consulta_API(tipo):
     Returns:
         list: Una lista de diccionarios con información de restaurantes que coinciden con el tipo especificado.
     '''
-    key global
 
     API_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 
@@ -54,7 +59,7 @@ def consulta_API(tipo):
     "location": "40.416709,-3.690286",
     "radius": 20000,
     "type": "restaurant",
-    "keyword": ["coreano"],
+    "keyword": [tipo],
     "language": "es",
     "key": key
     }
