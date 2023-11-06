@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 with open('API.txt') as file:
     
@@ -64,18 +65,14 @@ def consulta_API(tipo):
     "key": key
     }
 
-    # Realiza la consulta
     response = requests.get(API_URL, params=params)
 
-    # Comprueba el código de respuesta
     if response.status_code != 200:
 
         raise Exception("Error al realizar la consulta: {} {}".format(response.status_code, response.content))
 
-    # Decodifica la respuesta
     data = json.loads(response.content)
 
-    # Obtiene la lista de resultados
     results = data["results"]
 
     # Filtra los resultados por puntuación
@@ -87,4 +84,55 @@ def consulta_API(tipo):
 
 
     return results
-    
+
+def optim(df):
+
+    '''
+    Optimiza los datos de un dataframe.
+
+    Args:
+        dataframe(pandas.DataFrame): El DataFrame que optimizas
+    '''
+    int_columnas = df.select_dtypes(include=['int']).columns
+    df[int_columnas] = df[int_columnas].apply(pd.to_numeric, downcast='integer')
+
+    float_columnas = df.select_dtypes(include=['float']).columns
+    df[float_columnas] = df[float_columnas].apply(pd.to_numeric, downcast='float')
+
+    object_columnas = df.select_dtypes(include=['object']).columns
+    df[object_columnas] = df[object_columnas].astype('category')
+
+    datetime_columnas = df.select_dtypes(include=['datetime']).columns
+    df[datetime_columnas] = df[datetime_columnas].apply(pd.to_datetime, errors='coerce')
+
+    return df
+
+def convertir_coordenadas(columna_x, columna_y):
+  """Convierte dos columnas de coordenadas a un formato de coordenada.
+
+  Args:
+    columna_x: La columna de coordenadas X.
+    columna_y: La columna de coordenadas Y.
+
+  Returns:
+    Una lista de coordenadas en formato de coordenada.
+  """
+
+  # Convertimos las coordenadas a números enteros.
+
+  columna_x = columna_x.astype(int)
+  columna_y = columna_y.astype(int)
+
+  # Multiplicamos las coordenadas por el factor de escala.
+
+  factor_escala = 1e-7
+  columna_x = columna_x * factor_escala
+  columna_y = columna_y * factor_escala
+
+  # Convertimos las coordenadas a formato de coordenada.
+
+  coordenadas = []
+  for x, y in zip(columna_x, columna_y):
+    coordenadas.append(f"{x},{y}")
+
+  return coordenadas
