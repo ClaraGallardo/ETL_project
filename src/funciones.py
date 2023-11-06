@@ -84,4 +84,7 @@ def consulta_API(tipo):
     #Añade el tipo de restaurante
     for result in results:
         result["tipo"] = result["types"][0]
+
+
+    return results
     
