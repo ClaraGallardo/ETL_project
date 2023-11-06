@@ -136,3 +136,31 @@ def convertir_coordenadas(columna_x, columna_y):
     coordenadas.append(f"{x},{y}")
 
   return coordenadas
+
+def clean(df):
+
+    """
+    Limpia y formatea un DataFrame de acuerdo a las siguientes acciones:
+    
+    1. Elimina las columnas 'business_status', 'geometry' y 'tipo'.
+    2. Renombra las columnas restantes con nombres específicos.
+    3. Convierte el contenido de la columna 'Nombre' a mayúsculas.
+
+    Parámetros:
+    - df: DataFrame de Pandas
+        El DataFrame que se va a limpiar.
+
+    Retorna:
+    - df: DataFrame de Pandas
+        El DataFrame limpio y formateado de acuerdo a las acciones especificadas.
+
+    Ejemplo de uso:
+    df = pd.read_csv('datos.csv')  # Carga un DataFrame desde un archivo CSV
+    df_limpio = clean(df)  # Llama a la función para limpiar el DataFrame
+    """
+
+    df = df.drop(columns=['business_status','geometry','tipo'])
+    df.columns = ['Nombre','Foto','Precio','Puntuacion','Servicios', 'Nº opiniones']
+    df.Nombre = df.Nombre.str.upper()
+
+    return df
