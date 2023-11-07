@@ -1,5 +1,5 @@
 .ipynb_checkpoints
-.vscode
+.vscode/
 __pycache__
 testfunciones.py
 
@@ -7,4 +7,4 @@ token.txt
 API.txt
 password.txt
 
-data
+data/
