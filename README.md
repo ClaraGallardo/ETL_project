@@ -1,5 +1,7 @@
 # My ETL Project:
 
+![image](https://github.com/ClaraGallardo/MyETL_project/blob/main/image/360_F_594821637_Rzb8t6sMmPQBylvBX1Kme9sgB0pcoeyi.jpg)
+
 ## Introducción
 Este proyecto de ETL tiene como objetivo la extracción, transformación y carga de datos relacionados con los restaurantes étnicos de Madrid, con los que queremos estudiar su evolución y factores de éxito. Hemos utilizado varias fuentes de datos, incluyendo la API Place de Google, un archivo JSON descargado y web scraping con Selenium desde la página de TripAdvisor.
 
@@ -19,7 +21,7 @@ El objetivo principal de este proyecto es consolidar información detallada sobr
 
 Hemos utilizado la API Place de Google para obtener información detallada sobre lugares turísticos. Para acceder a esta API, necesitas una clave de API válida de Google. Los datos extraídos incluyen detalles como nombres, direcciones, calificaciones, reseñas y más.
 
-![image]()
+![image](https://github.com/ClaraGallardo/MyETL_project/blob/main/image/Captura%20de%20pantalla%202023-11-07%20082302.png)
 
 ### 2. Archivo JSON Descargado
 
