@@ -1,11 +1,5 @@
 # My ETL Project:
 
-https://datos.madrid.es/egob/catalogo/209548-491-censo-locales-historico.json = enlace de json
-Selenium a Tripadvisor para opiniones
-Api place de Google para reseñas
-
-# Proyecto ETL - Google Place API, JSON Descargado y Web Scraping de TripAdvisor
-
 ## Introducción
 Este proyecto de ETL tiene como objetivo la extracción, transformación y carga de datos relacionados con los restaurantes étnicos de Madrid, con los que queremos estudiar su evolución y factores de éxito. Hemos utilizado varias fuentes de datos, incluyendo la API Place de Google, un archivo JSON descargado y web scraping con Selenium desde la página de TripAdvisor.
 
